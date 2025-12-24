@@ -353,6 +353,18 @@ h1 {
   max-height: 420px; /* øk ved behov */
 }
 
+/* HERO: la innholdet ha litt mer luft nederst, og sørg for at ingenting "flyter ut" */
+.hero {
+  padding: 74px 0 34px;
+  overflow: visible; /* viktig hvis noe skulle overlappe på desktop */
+}
+
+@media (max-width: 900px) {
+  .hero {
+    padding-bottom: 56px; /* ekstra plass så kortet ikke krasjer med "streken" under */
+  }
+}
+
 /* =========================
    END / FOOTER
    ========================= */
@@ -373,4 +385,54 @@ h1 {
 .tiny {
   font-size: 0.92rem;
   color: hsla(0, 0%, 92%, 0.65);
+}
+
+@media (max-width: 900px) {
+  .hero-card {
+    max-width: 100%;
+    width: 100%;
+    margin-top: 18px;     /* litt luft fra teksten */
+    transform: none;      /* hvis du senere har lagt inn translate et sted */
+  }
+}
+
+@media (min-width: 901px) {
+  .hero {
+    padding-bottom: 74px; /* gir plass til overlapp */
+  }
+
+  .hero-card {
+    transform: translateY(24px); /* eller -24px hvis du vil at den skal opp */
+    z-index: 2;
+  }
+}
+
+/* Divider som stopper nederst i hero */
+.hero{
+  position: relative;
+  padding-bottom: 56px; /* litt luft før streken */
+}
+
+.hero::after{
+  content:"";
+  position:absolute;
+  left:0;
+  right:0;
+  bottom:0;
+  height:1px;
+  background: var(--line);
+}
+
+#samling.section {
+  background: hsl(240, 14%, 6%);
+  padding-top: 64px;
+}
+
+#samling.section {
+  background:
+    linear-gradient(
+      180deg,
+      hsl(240, 14%, 6%),
+      hsl(240, 14%, 7%)
+    );
 }
